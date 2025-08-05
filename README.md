@@ -1,11 +1,6 @@
 # 🌱 MangroveChain: Blockchain untuk Konservasi Mangrove Berbasis Data
 
-MangroveChain adalah sistem inovatif yang menggabungkan teknologi blockchain dengan upaya konservasi mangrove di seluruh Indonesia. Platform ini menyediakan wawasan mendalam tentang 30 proyek konservasi dari Aceh hingga Papua, melacak kepatuhan regulasi, dampak biodiversitas, keterlibatan masyarakat, serta transaksi kredit karbon yang tercatat dalam ledger blockchain yang tidak dapat diubah (*immutable ledger*).
-
-Dengan mengintegrasikan 14 dimensi data seperti pemantauan lingkungan, catatan kepemilikan lahan, sumber pendanaan, dan transaksi berbasis smart contract, MangroveChain menciptakan pandangan komprehensif terhadap efektivitas dan tata kelola proyek konservasi. Teknologi ini tidak hanya meningkatkan transparansi, tetapi juga memperkuat kredibilitas proyek di mata investor, pemerintah, dan masyarakat lokal.
-
----
-
+------
 ## 🧩 Latar Belakang
 
 **Mangrove** adalah ekosistem hutan pesisir tropis yang tumbuh di kawasan pasang-surut seperti muara sungai, teluk, dan laguna. Vegetasi mangrove memiliki kemampuan unik dalam menstabilkan garis pantai, menyaring polutan, serta menjadi tempat berkembang biak bagi berbagai spesies ikan, kepiting, burung, dan biota laut lainnya. Lebih dari itu, mangrove berperan penting sebagai penyerap karbon biru (*blue carbon*) yang sangat efektif dalam mitigasi perubahan iklim.
@@ -14,7 +9,9 @@ Indonesia merupakan negara dengan ekosistem mangrove terluas di dunia, mencakup 
 
 Sayangnya, potensi ini sedang terancam. Alih fungsi lahan, pembangunan tambak ilegal, polusi, dan lemahnya sistem pemantauan menyebabkan degradasi besar-besaran. Proyek konservasi yang ada pun sering kali terbentur kendala: minimnya data lintas sektor, tidak transparannya dana, dan lemahnya sistem verifikasi dampak.
 
-Di tengah tantangan ini, **MangroveChain** hadir sebagai solusi berbasis teknologi blockchain. Blockchain ini merekam setiap proses konservasi dalam sistem digital yang tidak dapat dimanipulasi, menggabungkan dimensi ekologis, sosial, hukum, dan finansial. Melalui sistem ini, pengambil keputusan dapat mengakses informasi yang akurat dan real-time untuk mendorong konservasi yang berkelanjutan, transparan, dan berdampak nyata.
+Di tengah tantangan ini, **MangroveChain** hadir sebagai solusi berbasis teknologi blockchain. Blockchain ini merekam setiap proses konservasi dalam sistem digital yang tidak dapat dimanipulasi, menggabungkan dimensi ekologis, sosial, hukum, dan finansial. Melalui sistem ini, pengambil keputusan dapat mengakses informasi yang akurat dan real-time untuk mendorong konservasi yang berkelanjutan, transparan, dan berdampak nyata. MangroveChain adalah sistem inovatif yang menggabungkan teknologi blockchain dengan upaya konservasi mangrove di seluruh Indonesia. Platform ini menyediakan wawasan mendalam tentang 30 proyek konservasi dari Aceh hingga Papua, melacak kepatuhan regulasi, dampak biodiversitas, keterlibatan masyarakat, serta transaksi kredit karbon yang tercatat dalam ledger blockchain yang tidak dapat diubah (*immutable ledger*).
+
+Dengan mengintegrasikan 14 dimensi data seperti pemantauan lingkungan, catatan kepemilikan lahan, sumber pendanaan, dan transaksi berbasis smart contract, MangroveChain menciptakan pandangan komprehensif terhadap efektivitas dan tata kelola proyek konservasi. Teknologi ini tidak hanya meningkatkan transparansi, tetapi juga memperkuat kredibilitas proyek di mata investor, pemerintah, dan masyarakat lokal.
 
 ---
 
@@ -66,24 +63,3 @@ Di tengah tantangan ini, **MangroveChain** hadir sebagai solusi berbasis teknolo
 
 ---
 
-## 📌 Status Proyek
-
-- [x] Penyiapan dataset dari 30 proyek konservasi
-- [x] Desain arsitektur sistem berbasis blockchain
-- [x] Analisis lima studi kasus strategis
-- [ ] Pengembangan dashboard interaktif berbasis data terbuka
-- [ ] Penerapan smart contract dan integrasi sistem ke platform pilot
-
----
-
-## 🔗 Kontak & Kolaborasi
-
-Proyek ini terbuka untuk kolaborasi dengan lembaga pemerintah, universitas, LSM, dan investor hijau.  
-Untuk diskusi lebih lanjut, silakan hubungi:
-
-📧 [Nama Anda] – [email@example.com]  
-🔗 [LinkedIn/Twitter/GitHub]
-
----
-
-> *“We don’t just plant trees — we plant trust, impact, and climate resilience — one verified block at a time.”*
