@@ -151,7 +151,7 @@ Data yang diekspor dari SQL (`conservation_db.csv`) selanjutnya dianalisis mengg
 
 **b. Kode Analisis Python (studikasus1fix.ipynb)**
 
-*(Letakkan blok kode Python di sini, seperti pada respons sebelumnya)*
+[**Klik disini**](https://github.com/Asfa-Asfialana/MangroveChain-Conservation-Analytics/blob/main/Studi%20Kasus%201/Studi%20Kasus%201.sql)
 
 #### **3. Kesimpulan Akhir Analisis**
 
