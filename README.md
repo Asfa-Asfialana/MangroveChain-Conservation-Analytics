@@ -334,15 +334,17 @@ FROM partisipasi_normal pn
 LEFT JOIN biodiversitas_summary bs ON pn.Conservation_ID = bs.Conservation_ID
 ORDER BY pn.Engagement_Date;
 ```
-Hasil dari query ini diekspor menjadi file `3. Query 1.csv` untuk dianalisis lebih lanjut.
+Hasil dari query ini diekspor menjadi file `geospatial_resikofix.csv` untuk dianalisis lebih lanjut.
 
 #### **2. Analisis Prediktif dan Forecasting (Python)**
 
-Data historis partisipasi masyarakat dari `3. Query 1.csv` digunakan untuk membangun model *time series* ARIMA. Model ini bertujuan untuk memprediksi tren tingkat partisipasi di masa depan.
+Data historis partisipasi masyarakat dari `geospatial_resikofix.csv` digunakan untuk membangun model *time series* ARIMA. Model ini bertujuan untuk memprediksi tren tingkat partisipasi di masa depan.
 
 **a. Visualisasi Forecasting Partisipasi Relatif**
 
 Grafik berikut menampilkan data historis partisipasi relatif bulanan (garis biru) dan hasil *forecasting* untuk 6 bulan ke depan (garis merah putus-putus) menggunakan model ARIMA.
+
+![VISUALISASI-ARIMA](https://github.com/Asfa-Asfialana/MangroveChain-Conservation-Analytics/blob/main/Studi%20Kasus%203/VISUALISASI-ARIMA.png)
 
 **b. Kode Analisis Python (untuk Forecasting)**
 
@@ -397,3 +399,7 @@ Model ARIMA memprediksi bahwa tingkat partisipasi relatif bulanan akan **stabil 
 *   **Alokasi Sumber Daya:** Prediksi tren yang stabil ini memberikan kepercayaan bagi manajemen untuk terus mengalokasikan sumber daya pada tingkat saat ini, tanpa perlu intervensi drastis.
 *   **Perencanaan Proyek:** CEO dapat menggunakan *forecast* ini sebagai *baseline* untuk menetapkan target partisipasi di proyek-proyek baru. Jika partisipasi aktual di proyek baru berada jauh di bawah *baseline* yang diprediksi ini, maka intervensi dini dapat dilakukan.
 *   **Manajemen Ekspektasi:** Model ini membantu dalam mengelola ekspektasi pemangku kepentingan dengan memberikan proyeksi berbasis data mengenai salah satu indikator kunci keberhasilan proyek.
+
+
+----
+
