@@ -403,3 +403,136 @@ Model ARIMA memprediksi bahwa tingkat partisipasi relatif bulanan akan **stabil 
 
 ----
 
+### **2.4 Analisis Risiko Hukum Multi-Dimensi**
+
+Analisis ini dilakukan untuk memenuhi kebutuhan departemen hukum dalam mengidentifikasi, memetakan, dan memprioritaskan proyek dengan profil risiko tertinggi. Alur kerja ini menggunakan SQL untuk melakukan skoring risiko multi-dimensi dan Python (dengan Plotly) untuk analisis geospasial, memvisualisasikan sebaran risiko di seluruh Indonesia.
+
+#### **1. Skoring dan Klasifikasi Risiko (PostgreSQL)**
+
+Langkah pertama adalah menghitung skor risiko untuk setiap proyek berdasarkan kombinasi beberapa faktor risiko dari tabel yang berbeda.
+
+**a. SQL Query untuk Skoring dan Klasifikasi Risiko**
+
+Query berikut ini menggabungkan data dari enam tabel untuk menghitung skor risiko berdasarkan tiga skenario utama. Setiap skenario diberikan bobot, dan skor total digunakan untuk mengklasifikasikan proyek menjadi tingkat risiko 'Tinggi', 'Sedang', atau 'Rendah'. Hasilnya kemudian digabungkan dengan data koordinat geospasial.
+
+```sql
+-- Query ini menghitung skor risiko dan menggabungkannya dengan data geospasial
+WITH risk_scoring AS (
+    SELECT 
+        c.conservation_id,
+        c.location,
+        -- Skenario 1: Izin pending + batas lahan tidak terdefinisi (Bobot: 30)
+        CASE 
+            WHEN rp.permit_status = 'Pending' AND lt.boundary_defined = 'No' THEN 30 
+            ELSE 0 
+        END AS risiko_izin,
+        -- Skenario 2: Lahan masyarakat + akses data terbatas (Bobot: 40)
+        CASE 
+            WHEN lt.land_type = 'Community Land' AND bd.access_level = 'Restricted' THEN 40 
+            ELSE 0 
+        END AS risiko_masyarakat,
+        -- Skenario 3: Kualitas air buruk + restorasi intensif (Bobot: 30)
+        CASE 
+            WHEN bm.water_quality = 'Poor' AND ca.activity_type = 'Restoration' THEN 30 
+            ELSE 0 
+        END AS risiko_kualitas_air
+    FROM mangrove_conservation_records c
+    JOIN regulatory_permits rp ON c.conservation_id = rp.conservation_id
+    JOIN land_tenure_records lt ON c.conservation_id = lt.conservation_id
+    JOIN blockchain_data_compliance bd ON c.conservation_id = bd.conservation_id
+    JOIN biodiversity_monitoring bm ON c.conservation_id = bm.conservation_id
+    JOIN conservation_activities ca ON c.conservation_id = ca.conservation_id
+    WHERE c.conservation_id IN (
+        'C001', 'C002', 'C003', 'C004', 'C005', 'C006', 'C007', 'C008', 'C009', 'C010',
+        'C011', 'C012', 'C013', 'C014', 'C015', 'C016', 'C017', 'C018', 'C019', 'C020'
+    )
+),
+scored AS (
+    SELECT 
+        rs.*,
+        (risiko_izin + risiko_masyarakat + risiko_kualitas_air) AS total_risiko,
+        CASE 
+            WHEN (risiko_izin + risiko_masyarakat + risiko_kualitas_air) >= 70 THEN 'Tinggi'
+            WHEN (risiko_izin + risiko_masyarakat + risiko_kualitas_air) >= 30 THEN 'Sedang'
+            ELSE 'Rendah'
+        END AS tingkat_risiko
+    FROM risk_scoring rs
+)
+SELECT 
+    s.conservation_id,
+    s.location,
+    s.risiko_izin,
+    s.risiko_masyarakat,
+    s.risiko_kualitas_air,
+    s.total_risiko,
+    s.tingkat_risiko,
+    k.latitude,
+    k.longitude
+FROM scored s
+JOIN titik_koordinat_kabupaten k ON s.location = k.location
+ORDER BY s.total_risiko DESC;
+```
+Hasil dari query ini diekspor menjadi file `geospatial_resikofix.csv` untuk visualisasi.
+
+#### **2. Analisis Geospasial Pola Sebaran Risiko (Python & Plotly)**
+
+Data yang telah diskor dan diklasifikasikan kemudian dipetakan untuk memberikan pandangan visual tentang distribusi geografis risiko.
+
+**a. Visualisasi Peta Geospasial Interaktif**
+
+Peta berikut dibuat menggunakan Plotly dan menampilkan setiap proyek sebagai sebuah titik. Warna titik merepresentasikan tingkat risiko (Tinggi, Sedang, Rendah), dan ukuran titik merepresentasikan skor risiko tambahan (misalnya, dampak ekologis). Peta ini interaktif, memungkinkan pengguna untuk *hover* di setiap titik untuk melihat detail lebih lanjut.
+
+*(Karena ini adalah file Markdown statis, Anda bisa menempatkan screenshot dari peta interaktif di sini, atau menyertakan tautan ke file HTML-nya.)*
+
+**Peta Interaktif dapat dilihat di sini:** [peta_risiko_konservasi.html](./peta_risiko_konservasi.html)
+
+**b. Kode Analisis Python (studi_kasus4.ipynb)**
+
+Kode berikut membaca data CSV yang dihasilkan oleh SQL dan menggunakan Plotly Express untuk membuat peta interaktif.
+
+```python
+import pandas as pd
+import plotly.express as px
+
+# Muat data dari hasil query PostgreSQL
+df = pd.read_csv("geospatial_resikofix.csv")
+
+# Pastikan kolom yang dibutuhkan ada
+required_columns = ['conservation_id', 'location', 'latitude', 'longitude', 'tingkat_risiko', 'risk_score']
+# ... (sisa kode seperti yang disediakan) ...
+
+# Buat visualisasi peta geospasial
+fig = px.scatter_mapbox(
+    df,
+    lat="latitude",
+    lon="longitude",
+    color="tingkat_risiko",
+    size="risk_score",  # Besar simbol bisa disesuaikan, misal dengan total_risiko
+    hover_name="location",
+    hover_data={
+        "conservation_id": True,
+        "risk_score": True,
+        "latitude": False,
+        "longitude": False
+    },
+    zoom=4,
+    height=600,
+    mapbox_style="carto-positron",
+    title="Peta Geospasial Tingkat Risiko Konservasi Mangrove"
+)
+
+# Tampilkan dan simpan sebagai HTML interaktif
+fig.show()
+fig.write_html("peta_risiko_konservasi.html")
+```
+
+#### **3. Hasil dan Implikasi**
+
+**a. Identifikasi Klaster Risiko:**
+Peta geospasial dengan jelas mengidentifikasi "klaster risiko" atau "hotspot". Proyek dengan tingkat risiko **'Tinggi'** seperti di **Serang** (C017) dan **'Sedang'** seperti di **Tanah Laut** (C003) dan **Takalar** (C002) menjadi prioritas utama untuk mitigasi risiko.
+
+**b. Validasi Model Risiko:**
+Analisis ini mengonfirmasi hipotesis awal bahwa proyek dengan kombinasi beberapa faktor risiko (misalnya, izin *pending* dan kualitas air buruk) memang memiliki skor risiko total yang lebih tinggi. Ini membuktikan kemampuan sistem untuk mengubah data kualitatif dari berbagai sumber menjadi metrik risiko yang terukur dan dapat ditindaklanjuti.
+
+**c. Perencanaan Strategis:**
+Departemen hukum dapat menggunakan peta ini untuk mengalokasikan sumber daya secara proaktif, seperti mengirim tim mediasi ke wilayah dengan klaster risiko 'Sedang' dan 'Tinggi' atau melakukan audit hukum yang lebih mendalam pada proyek-proyek yang teridentifikasi.
