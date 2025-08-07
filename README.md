@@ -145,12 +145,9 @@ Data yang diekspor dari SQL (`conservation_db.csv`) selanjutnya dianalisis mengg
 
 **a. Visualisasi Matriks Korelasi (Fokus & Penuh)**
 
-*   **Heatmap Fokus:** Menunjukkan hubungan langsung antara faktor regulasi dan metrik biodiversitas.
-*   **Heatmap Penuh:** Memberikan konteks lengkap dengan menunjukkan semua hubungan antar variabel.
+*   **Heatmap :** Menunjukkan hubungan langsung antara faktor regulasi dan metrik biodiversitas dan Memberikan konteks lengkap dengan menunjukkan semua hubungan antar variabel.
 
-
-
-*(Letakkan kedua gambar heatmap di sini, seperti pada respons sebelumnya)*
+![filtered_mangrove_correlation_heatmap](https://github.com/Asfa-Asfialana/MangroveChain-Conservation-Analytics/blob/main/Studi%20Kasus%201/filtered_mangrove_correlation_heatmap.png)
 
 **b. Kode Analisis Python (studikasus1fix.ipynb)**
 
