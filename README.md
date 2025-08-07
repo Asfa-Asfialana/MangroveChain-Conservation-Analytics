@@ -4,7 +4,7 @@
 
 # 1. Pendahuluan
 
-## 1.1Latar Belakang
+## 1.1 Latar Belakang
 
 **Mangrove** adalah ekosistem hutan pesisir tropis yang tumbuh di kawasan pasang-surut seperti muara sungai, teluk, dan laguna. Vegetasi mangrove memiliki kemampuan unik dalam menstabilkan garis pantai, menyaring polutan, serta menjadi tempat berkembang biak bagi berbagai spesies ikan, kepiting, burung, dan biota laut lainnya. Lebih dari itu, mangrove berperan penting sebagai penyerap karbon biru (*blue carbon*) yang sangat efektif dalam mitigasi perubahan iklim.
 
@@ -163,3 +163,104 @@ Dengan menggabungkan wawasan dari agregasi SQL dan analisis korelasi Python, kes
 
 ---
 
+### **2.2 Optimalisasi Pendanaan Berbasis Blockchain**
+
+Analisis ini dirancang untuk memenuhi kebutuhan konsorsium investor hijau yang menuntut verifikasi dampak, integritas data, dan transparansi sebelum mengalokasikan dana sebesar $15 juta. Alur kerja ini menggunakan serangkaian query SQL untuk mengkuantifikasi kinerja, memverifikasi kepatuhan, dan mengidentifikasi proyek berkinerja terbaik, yang hasilnya kemudian divisualisasikan untuk presentasi yang jelas.
+
+#### **1. Pengambilan dan Analisis Data dari Database (PostgreSQL)**
+
+Database menjadi sumber utama untuk menjawab setiap kriteria yang ditetapkan oleh investor.
+
+**a. Kuantifikasi Penyerapan CO2 per Rupiah Investasi**
+
+Query pertama ini menghitung efisiensi penyerapan karbon untuk setiap proyek dengan metrik **"CO2 per Juta Rupiah"**. Ini adalah KPI inti untuk investor dampak.
+
+```sql
+-- Query untuk mengukur efisiensi karbon per investasi
+SELECT 
+    fs.conservation_id,	
+    fs.source_name,
+    fs.amount_idr,
+    ei.co2_sequestration_tonnes,
+    -- Menghitung penyerapan CO2 (ton) per juta Rupiah
+    ei.co2_sequestration_tonnes / (fs.amount_idr / 1000000) AS co2_per_juta_rupiah
+FROM funding_sources fs
+JOIN environmental_impact ei ON fs.conservation_id = ei.conservation_id
+WHERE ei.impact_type = 'Carbon Storage'
+ORDER BY co2_per_juta_rupiah DESC;
+```
+
+**b. Verifikasi Kepatuhan Tata Kelola Data Blockchain**
+
+Query kedua ini digunakan untuk mengaudit kepatuhan tata kelola data. Query ini menghitung persentase catatan yang memenuhi standar keamanan (`encryption_level = 'High'`) dan persetujuan masyarakat (`consent_obtained = 'Yes'`).
+
+```sql
+-- Query untuk mengukur persentase kepatuhan data
+WITH compliance_stats AS (
+    SELECT 
+        conservation_id,
+        COUNT(*) AS total_records,
+        SUM(CASE
+            WHEN encryption_level = 'High' AND consent_obtained = 'Yes' THEN 1
+            ELSE 0
+            END) AS compliant_records
+    FROM blockchain_data_compliance 
+    GROUP BY conservation_id    
+)
+SELECT
+    conservation_id,
+    total_records,
+    compliant_records,
+    (compliant_records::float / total_records) * 100 as compliance_percentage
+FROM compliance_stats
+ORDER BY compliance_percentage DESC;
+```
+
+**c. Identifikasi Proyek Berkinerja Terbaik (Query Gabungan)**
+
+Query final ini menggabungkan semua kriteria investor untuk menyaring dan mengidentifikasi proyek-proyek yang paling layak mendapatkan pendanaan. Hasil dari query inilah yang diekspor menjadi `2. Query 3.csv` untuk visualisasi.
+
+```sql
+-- Query final untuk mengidentifikasi proyek terbaik berdasarkan semua kriteria
+SELECT 
+    fs.conservation_id,
+    fs.source_name,
+    fs.amount_idr,
+    ei.co2_sequestration_tonnes,
+    ei.co2_sequestration_tonnes / (fs.amount_idr / 1000000) AS co2_per_juta_rupiah,
+    bdc.encryption_level,
+    bdc.consent_obtained
+FROM funding_sources fs
+JOIN environmental_impact ei ON fs.conservation_id = ei.conservation_id
+JOIN blockchain_data_compliance bdc ON fs.conservation_id = bdc.conservation_id
+WHERE 
+    ei.impact_type = 'Carbon Storage'
+    AND bdc.encryption_level = 'High'
+    AND bdc.consent_obtained = 'Yes'
+    AND fs.amount_idr > 50000000 -- Filter tambahan untuk proyek signifikan
+ORDER BY co2_per_juta_rupiah DESC, fs.amount_idr DESC;
+```
+
+#### **2. Visualisasi dan Laporan Analisis (Python)**
+
+Data yang dihasilkan dari query final di atas kemudian divisualisasikan menggunakan Python untuk memudahkan pemahaman.
+
+**a. Visualisasi Scatter Plot 3D**
+
+*(Letakkan gambar scatter plot 3D di sini)*
+
+**b. Kode Analisis Python (Test.ipynb)**
+
+*(Letakkan blok kode Python di sini)*
+
+**c. Data yang Digunakan (2. Query 3.csv)**
+
+*(Letakkan tabel data CSV di sini)*
+
+#### **3. Kesimpulan Akhir Analisis**
+
+Dengan menggabungkan analisis SQL dan visualisasi Python, laporan komprehensif dapat disajikan kepada investor:
+
+*   **Efisiensi Terbukti:** Analisis SQL dan visualisasi mengonfirmasi bahwa proyek-proyek yang dianalisis memiliki **efisiensi karbon yang konsisten dan tinggi**, yaitu 10 ton CO2 per juta Rupiah.
+*   **Kepatuhan Terverifikasi:** Semua proyek yang disaring memenuhi standar kepatuhan 100% untuk **enkripsi tingkat tinggi** dan **persetujuan masyarakat**, yang diverifikasi melalui query SQL dan ditampilkan dengan jelas pada sumbu Z plot.
+*   **Rekomendasi Berbasis Data:** Proyek-proyek yang diidentifikasi oleh query final (C004, C010, C016, dan C019) adalah kandidat utama untuk investasi karena memenuhi semua kriteria secara terukur dan dapat diaudit di blockchain. Ini memberikan bukti kuat bagi investor untuk mengalokasikan dana dengan keyakinan penuh.
