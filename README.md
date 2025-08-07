@@ -484,7 +484,7 @@ Peta berikut dibuat menggunakan Plotly dan menampilkan setiap proyek sebagai seb
 
 *(Karena ini adalah file Markdown statis, Anda bisa menempatkan screenshot dari peta interaktif di sini, atau menyertakan tautan ke file HTML-nya.)*
 
-**Peta Interaktif dapat dilihat di sini:** [peta_risiko_konservasi.html](./peta_risiko_konservasi.html)
+**Peta Interaktif dapat dilihat di sini:**[./peta_risiko_konservasi.html](https://github.com/Asfa-Asfialana/MangroveChain-Conservation-Analytics/blob/main/Studi%20Kasus%204/peta_risiko_konservasi.html))
 
 **b. Kode Analisis Python (studi_kasus4.ipynb)**
 
