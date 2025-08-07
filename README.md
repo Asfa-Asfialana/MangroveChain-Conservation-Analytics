@@ -263,16 +263,17 @@ Notebook ini berisi rangkaian kode Python yang digunakan untuk melakukan:
 Kode ini menjadi fondasi utama untuk analisis data eksploratif dalam proyek MangroveChain.
 *[Letakkan blok kode Python di sini](https://github.com/Asfa-Asfialana/MangroveChain-Conservation-Analytics/blob/main/Studi%20Kasus%202/studi_kasus2.ipynb)*
 
-**c. Data yang Digunakan (2. Query 3.csv)**
+**c. Data yang Digunakan**
 
 Dataset ini merupakan hasil akhir dari query SQL yang menggabungkan beberapa tabel seperti community_engagement, carbon_credits, dan project_metadata. Data mencakup kolom-kolom berikut:
 
-- project_id
-- partisipasi_relatif
-- area_ha
-- carbon_credits
-- region
-- status_izin
+- conservation_id
+- source_name
+- amount_idr
+- co2_sequestration_tonnes
+- co2_per_juta_rupiah
+- encryption_level
+- consent_obtained
 
 Dataset ini digunakan sebagai input utama dalam visualisasi dan model prediktif berbasis keterlibatan masyarakat.
 
