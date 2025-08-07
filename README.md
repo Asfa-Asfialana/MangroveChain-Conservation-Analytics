@@ -1,7 +1,7 @@
 # 🌱 MangroveChain: Blockchain untuk Konservasi Mangrove Berbasis Data
 
 ------
-## 🧩 Latar Belakang
+## Latar Belakang
 
 **Mangrove** adalah ekosistem hutan pesisir tropis yang tumbuh di kawasan pasang-surut seperti muara sungai, teluk, dan laguna. Vegetasi mangrove memiliki kemampuan unik dalam menstabilkan garis pantai, menyaring polutan, serta menjadi tempat berkembang biak bagi berbagai spesies ikan, kepiting, burung, dan biota laut lainnya. Lebih dari itu, mangrove berperan penting sebagai penyerap karbon biru (*blue carbon*) yang sangat efektif dalam mitigasi perubahan iklim.
 
@@ -15,51 +15,53 @@ Dengan mengintegrasikan 14 dimensi data seperti pemantauan lingkungan, catatan k
 
 ---
 
-## ❓ Rumusan Masalah
+## Rumusan Masalah
 
-1. **Analisis Efektivitas Regulasi & Dampak Biodiversitas**  
-   Ketimpangan dalam hasil ekologis di berbagai proyek konservasi dengan status perizinan dan kepemilikan lahan yang berbeda.
+1. Analisis Efektivitas Regulasi & Dampak Biodiversitas
+  
+2. Optimalisasi Pendanaan Berbasis Blockchain 
+   
+3. Prediksi Kinerja Proyek Berbasis Keterlibatan Masyarakat
 
-2. **Kebutuhan Verifikasi Dampak bagi Investor**  
-   Tuntutan investor terhadap bukti terverifikasi atas efisiensi penyerapan karbon dan integritas data proyek.
+4. Analisis Risiko Hukum Multi-Dimensi
 
-3. **Prediksi Keberlanjutan Berdasarkan Keterlibatan Masyarakat**  
-   Hubungan antara tingkat partisipasi masyarakat dan keberhasilan jangka panjang proyek konservasi.
-
-4. **Identifikasi Risiko Hukum Proyek Konservasi**  
-   Kompleksitas status hukum proyek berdasarkan izin, batas lahan, dan kualitas lingkungan.
-
-5. **Optimasi Arsitektur Data dan Sistem Blockchain**  
-   Desain alur data dan smart contract untuk meningkatkan efisiensi dan skalabilitas platform.
+5. Analisis Jaringan Blockchain dalam Konservasi
 
 ---
 
-## 🎯 Tujuan
+## Tujuan
 
-- Mengembangkan sistem blockchain yang mendukung pemantauan konservasi mangrove secara transparan dan akuntabel.
-- Menganalisis keterkaitan antara aspek regulasi, sosial, ekologis, dan teknologi dalam efektivitas konservasi.
-- Memberikan alat bantu berbasis data untuk pengambilan keputusan oleh pemerintah dan investor hijau.
-- Merancang model prediktif untuk meningkatkan alokasi sumber daya berbasis keterlibatan masyarakat.
-- Mengidentifikasi proyek-proyek risiko tinggi untuk mitigasi hukum dan perbaikan tata kelola lahan.
+1. Menganalisis hubungan antara efektivitas regulasi dan kepemilikan lahan terhadap dampak biodiversitas proyek konservasi.
+2. Mengoptimalkan alokasi pendanaan ke proyek mangrove berbasis blockchain yang memenuhi standar dampak dan integritas data.
+3. Memprediksi keberlanjutan proyek berdasarkan pola keterlibatan masyarakat di tahap awal pelaksanaan.
+4. Mengidentifikasi dan memetakan proyek berisiko hukum tinggi melalui analisis multi-dimensi dan spasial.
+5. Memahami pola aliran dan distribusi data blockchain untuk mengoptimalkan arsitektur sistem konservasi.
 
 ---
 
-## 🌍 Manfaat
+## Manfaat
 
-### Bagi Eco-Techno Leaders
+### 1.Bagi Eco-Techno Leaders
 - Akses ke sistem monitoring real-time berbasis blockchain.
 - Pemahaman teknis tentang desain data dan smart contract dalam proyek konservasi.
 - Model prediksi berbasis keterlibatan sosial dan data ekologis.
 
-### Bagi Pemerintah
+### 2.Bagi Pemerintah
 - Penguatan sistem evaluasi berbasis data untuk kebijakan lingkungan.
 - Dukungan teknis untuk pencapaian target NDC dan program karbon nasional.
 - Sistem klasifikasi risiko proyek untuk intervensi kebijakan yang tepat sasaran.
 
-### Bagi Investor Hijau
+### 3.Bagi Investor Hijau
 - Verifikasi digital atas dampak karbon dan transparansi dana.
 - Identifikasi proyek dengan performa tertinggi dan risiko terendah.
 - Jaminan keamanan data dan partisipasi komunitas lokal yang terdokumentasi.
+
+-----
+
+## Pembahasan
+
+### 1. Analisis Efektivitas Regulasi & Dampak Biodiversitas
+
 
 ---
 
