@@ -247,15 +247,37 @@ Data yang dihasilkan dari query final di atas kemudian divisualisasikan mengguna
 
 **a. Visualisasi Scatter Plot 3D**
 
-*(Letakkan gambar scatter plot 3D di sini)*
+Visualisasi ini menampilkan hubungan tiga dimensi antara tingkat partisipasi masyarakat, luas area konservasi, dan jumlah kredit karbon yang dihasilkan oleh masing-masing proyek. Tujuannya adalah untuk mengidentifikasi pola proyek yang efisien, di mana keterlibatan komunitas tinggi menghasilkan dampak karbon yang signifikan di area konservasi yang luas.
+
+![efisiensi_pendanaan](https://github.com/Asfa-Asfialana/MangroveChain-Conservation-Analytics/blob/main/Studi%20Kasus%202/efisiensi_pendanaan.png)
 
 **b. Kode Analisis Python (Test.ipynb)**
 
-*(Letakkan blok kode Python di sini)*
+Notebook ini berisi rangkaian kode Python yang digunakan untuk melakukan:
+
+- Pembersihan dan penggabungan data dari beberapa sumber,
+- Transformasi variabel seperti skala logaritmik,
+- Pembuatan scatter plot 3D dengan Matplotlib dan seaborn,
+- Simpan visualisasi dalam format PNG dan interaktif.
+
+Kode ini menjadi fondasi utama untuk analisis data eksploratif dalam proyek MangroveChain.
+*[Letakkan blok kode Python di sini](https://github.com/Asfa-Asfialana/MangroveChain-Conservation-Analytics/blob/main/Studi%20Kasus%202/studi_kasus2.ipynb)*
 
 **c. Data yang Digunakan (2. Query 3.csv)**
 
-*(Letakkan tabel data CSV di sini)*
+Dataset ini merupakan hasil akhir dari query SQL yang menggabungkan beberapa tabel seperti community_engagement, carbon_credits, dan project_metadata. Data mencakup kolom-kolom berikut:
+
+- project_id
+- partisipasi_relatif
+- area_ha
+- carbon_credits
+- region
+- status_izin
+
+Dataset ini digunakan sebagai input utama dalam visualisasi dan model prediktif berbasis keterlibatan masyarakat.
+
+[📌 Klik di sini untuk mengunduh dataset](https://github.com/Asfa-Asfialana/MangroveChain-Conservation-Analytics/blob/main/Studi%20Kasus%202/efisiensi_pendanaan.csv
+)
 
 #### **3. Kesimpulan Akhir Analisis**
 
